@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Language" content="ja">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<meta http-equiv="Content-Style-Type" content="text/css">
+	<title>demo.html</title>
+	<link rel="stylesheet" type="text/css" href="./demo.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$.extend(jQuery.easing,{
+				linear2nd: function(status,cur_time,firstNum,changeVal,dur_time){
+					if(status < 0.5) return firstNum + changeVal * (cur_time/=dur_time) *2;
+					cur_time-=dur_time/2;
+					return firstNum + changeVal * (cur_time/=dur_time) * 2;
+				}
+			});
+			$("#container").on("click",function(){
+				$('#container').children('img').fadeToggle(1000,'linear2nd');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="container"><img src="./shihori041_1.jpg"/></div>
+</body>
+</html>
